@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
 
-function App() {
+import React from "react";
+import { useSelector } from "react-redux"; // import 해주세요.
+import styled from "styled-components";
+import TodosContainer from "./components/TodosContainer";
+
+
+const App = () => {
+  const counterStore = useSelector((state) => state); // 추가해주세요.
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <TodosContainer></TodosContainer>
+  )
 }
 
 export default App;
