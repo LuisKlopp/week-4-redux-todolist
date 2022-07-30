@@ -1,5 +1,6 @@
 // src/modules/counter.js
 
+import produce from 'immer';
 
 // Action Value
 
@@ -14,29 +15,50 @@
 const ADD_TODO = 'todos/ADD_TODO';
 const DELETE_TODO = 'todos/DELETE_TODO';
 const TOGGLE_TODO = 'todos/TOGGLE_TODO';
-const GET_TODO = 'todos/GET_TODO';
 
 
 let nextId = 1; // todo 데이터에서 사용 할 고유 id
+
 export const addTodo = (title, content) => ({
   type: ADD_TODO,
   todo: {
     id: nextId++, // 새 항목을 추가하고 nextId 값에 1을 더해줍니다.
     title,
     content,
+    isDone: false,
   }
 });
 
+export const deleteTodo = id => ( {
+  type: DELETE_TODO,
+  id
+} ) 
+
+export const toggleTodo = id => ( {
+  type: TOGGLE_TODO,
+  id
+} )
 
 // 초기 상태값
-const initialState = [
-]
+
 
 // 리듀서
-const todos = (state = initialState, action) => {
+const todos = (state = [], action) => {
   switch (action.type) {
     case ADD_TODO:
-      return state.concat(action.todo);
+      const newState = [...state]
+      return newState.concat(action.todo);
+
+    case DELETE_TODO:
+      const deleteState = [...state].filter(todo => todo.id !== action.id)
+      return deleteState;
+
+    case TOGGLE_TODO: 
+      const toggleState = [...state].map(
+        todo => todo.id === action.id ? { ...todo, isDone: !todo.isDone } : todo
+      );
+      return toggleState;
+
     default:
       return state;
   }

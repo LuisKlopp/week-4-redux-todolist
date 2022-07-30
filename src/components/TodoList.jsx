@@ -20,9 +20,8 @@ const StH1 = styled.h1`
 const TodoList = () => {
 
   const state = useSelector(state => state.todo);
-  console.log(state)
-
-  const working_list = state.map((todo) => (<TodoItem todo={todo}></TodoItem>))
+  const working_list = state.filter(todo => todo.isDone === false).map((todo, i) => (<TodoItem todo={todo} key={i}></TodoItem>))
+  const done_list = state.filter(todo => todo.isDone === true).map((todo, i) => (<TodoItem todo={todo} key={i}></TodoItem>))
 
 
   return  (
@@ -34,7 +33,7 @@ const TodoList = () => {
     </StList>
     <StH1>Done!!</StH1>
     <StList>
-      { working_list }
+      { done_list }
     </StList>
     </>
   )
