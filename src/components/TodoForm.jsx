@@ -20,15 +20,19 @@ const TodoInput = styled.input`
   border-radius: 20px;
   margin-left:40px;
   margin-right:40px;
+  padding-left:20px;
 `
 const TodoButton = styled.button`
   width:150px;
-  height:40px;
+  height:50px;
   margin:0px 20px 0px 20px;
   font-weight:600;
-  background-color: black;
+  background-color: #ec8484;
   color:white;
   font-size:20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 `
 const FormItems = styled.div`
   display: flex;
@@ -40,7 +44,7 @@ const TodoForm = () => {
 
 
 
-  const state = useSelector(state => state.todo);
+  const todo_state = useSelector(state => state.todo);
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const dispatch = useDispatch();
@@ -48,17 +52,13 @@ const TodoForm = () => {
 
 
   const onChange = e => {
-    if (e.target.name === 'title') {
-      setTitle(e.target.value)
-    } else {
-      setContent(e.target.value)
-    }
+    e.target.name === 'title' ? setTitle(e.target.value) : setContent(e.target.value)
+    
   }
 
   const onClick = () => {
     if ( title !== '' && content !== '') {
       onCreate(title, content);
-      console.log(state)
       setTitle('');
       setContent('');
     }

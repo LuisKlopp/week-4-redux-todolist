@@ -1,7 +1,5 @@
 // src/modules/counter.js
 
-import produce from 'immer';
-
 // Action Value
 
 // Action Creator
@@ -12,10 +10,9 @@ import produce from 'immer';
 
 // export default reducer
 
-const ADD_TODO = 'todos/ADD_TODO';
-const DELETE_TODO = 'todos/DELETE_TODO';
-const TOGGLE_TODO = 'todos/TOGGLE_TODO';
-
+const ADD_TODO = "todos/ADD_TODO";
+const DELETE_TODO = "todos/DELETE_TODO";
+const TOGGLE_TODO = "todos/TOGGLE_TODO";
 
 let nextId = 1; // todo 데이터에서 사용 할 고유 id
 
@@ -26,43 +23,45 @@ export const addTodo = (title, content) => ({
     title,
     content,
     isDone: false,
-  }
+  },
 });
 
-export const deleteTodo = id => ( {
+export const deleteTodo = (id) => ({
   type: DELETE_TODO,
-  id
-} ) 
+  id,
+});
 
-export const toggleTodo = id => ( {
+export const toggleTodo = (id) => ({
   type: TOGGLE_TODO,
-  id
-} )
+  id,
+});
+
 
 // 초기 상태값
+const initialState = {
+  todo_1: [],
+
+};
+
 
 
 // 리듀서
-const todos = (state = [], action) => {
+const todos = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
-      const newState = [...state]
-      return newState.concat(action.todo);
+      const addState = { ...state, todo_1: [...state.todo_1, action.todo] };
+      return addState;
 
     case DELETE_TODO:
-      const deleteState = [...state].filter(todo => todo.id !== action.id)
-      return deleteState;
-
-    case TOGGLE_TODO: 
-      const toggleState = [...state].map(
-        todo => todo.id === action.id ? { ...todo, isDone: !todo.isDone } : todo
-      );
+      const deleteFilter = { ...state, todo_1: state.todo_1.filter(todo => todo.id !== action.id)}
+      return deleteFilter;
+    case TOGGLE_TODO:
+      const toggleState = { ...state, todo_1: state.todo_1.map(todo => todo.id === action.id ? { ...todo, isDone: !todo.isDone} : todo)}
       return toggleState;
-
     default:
       return state;
   }
-}
+};
 
 // 모듈파일에서는 리듀서를 export default 한다.
 export default todos;
