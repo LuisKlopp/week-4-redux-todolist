@@ -64,7 +64,7 @@ const TodoItem = ({todo, i}) => {
 
 
     <>
-    <StItem isDone={isDone} key={i}>
+    <StItem isDone={isDone}>
       <StP onClick={() => {navigate("/detail/" + todo.id)}}>
         상세보기
       </StP>
