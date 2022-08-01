@@ -1,8 +1,6 @@
 // src/App.js
 
 import React from "react";
-import { useSelector } from "react-redux"; // import 해주세요.
-import styled from "styled-components";
 import TodoContainer from "./components/TodoContainer";
 import { Routes, Route, Link, Redirect } from 'react-router-dom'
 import Detail from "./components/Detail.jsx"
