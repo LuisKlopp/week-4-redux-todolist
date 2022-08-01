@@ -8,9 +8,9 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 
 
 const StItem = styled.div`
-  width:20%;
+  width:25%;
   height:180px;
-  border:3px solid #12a670;
+  border:3px solid ${props => props.isDone ? '#12a670' : '#ea5718'};
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -19,38 +19,64 @@ const StItem = styled.div`
   margin:20px; 
 `
 
+const StP = styled.div`
+  cursor: pointer;
+  margin: 0px 0px 20px 0px;
+  &:hover{
+    color:red;
+  }
+`
+
+const StDiv = styled.div`
+  width:100%;
+  display: flex;
+  justify-content: center;
+
+`
+
+const StButton = styled.button`
+  width:35%;
+  margin-left:10px;
+  margin-top:20px;
+  border:none;
+  height:30px;
+  cursor: pointer;
+  background-color: antiquewhite;
+  font-weight:600;
+  &:hover{  
+    background-color : #f2ae81;
+  }
+`
+
 
 
 
 const TodoItem = ({todo, i}) => {
 
-  const state = useSelector(state => state.todo.todo_1)
 
   const dispatch = useDispatch();
-  const onDelete = id => dispatch(deleteTodo(id))
-  const onToggle = id => dispatch(toggleTodo(id))
+  const onDelete = (id) => dispatch(deleteTodo(id))
+  const onToggle = (id) => dispatch(toggleTodo(id))
   const navigate = useNavigate();
-  console.log(state)
-
+  const isDone = todo.isDone;
 
 
   return  (
 
 
     <>
-    <StItem key={i}>
-      <p onClick={() => {navigate("/detail/" + todo.id)}} style={{cursor:"pointer"}}>
+    <StItem isDone={isDone} key={i}>
+      <StP onClick={() => {navigate("/detail/" + todo.id)}}>
         상세보기
-      </p>
-    <span>id : {todo.id} </span>
-    <span>{todo.title}</span>
+      </StP>
+    <span style={{fontWeight:600, fontSize:'20px'}}>{todo.title}</span>
     <span>{todo.content}</span>
-    <div>
-    <button onClick={() => { onDelete(todo.id) }}>삭제하기</button>
-    <button style={{marginLeft:"10px"}} onClick={() => { onToggle(todo.id)}}>
-    {todo.isDone ? "취소!" : "완료!"}
-    </button>
-    </div>
+    <StDiv>
+    <StButton onClick={() => { onDelete(todo.id) }}>삭제하기</StButton>
+    <StButton onClick={() => { onToggle(todo.id)}}>
+    {isDone ? "취소!" : "완료!"}
+    </StButton>
+    </StDiv>
     </StItem>
     </>
   )

@@ -55,9 +55,11 @@ const todos = (state = initialState, action) => {
     case DELETE_TODO:
       const deleteFilter = { ...state, todo_1: state.todo_1.filter(todo => todo.id !== action.id)}
       return deleteFilter;
+
     case TOGGLE_TODO:
       const toggleState = { ...state, todo_1: state.todo_1.map(todo => todo.id === action.id ? { ...todo, isDone: !todo.isDone} : todo)}
       return toggleState;
+
     default:
       return state;
   }

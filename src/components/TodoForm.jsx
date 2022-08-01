@@ -16,8 +16,9 @@ const FormComtainer = styled.div`
 const TodoInput = styled.input`
   width:200px;
   height:40px;
-  border:2px solid black;
+  border:2px solid #de3636;
   border-radius: 20px;
+
   margin-left:40px;
   margin-right:40px;
   padding-left:20px;
@@ -27,7 +28,7 @@ const TodoButton = styled.button`
   height:50px;
   margin:0px 20px 0px 20px;
   font-weight:600;
-  background-color: #ec8484;
+  background-color: #de3636;
   color:white;
   font-size:20px;
   border: none;
@@ -44,7 +45,6 @@ const TodoForm = () => {
 
 
 
-  const todo_state = useSelector(state => state.todo);
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const dispatch = useDispatch();
@@ -70,9 +70,9 @@ const TodoForm = () => {
     <FormComtainer>
       <h1 style={{marginRight:"50px"}}>Todo!</h1>
       <FormItems>
-        <h1>제목</h1>
+        <h2>제목</h2>
         <TodoInput name="title" onChange={onChange} value={title}></TodoInput>
-        <h1>내용</h1>
+        <h2>내용</h2>
         <TodoInput name="content" onChange={onChange} value={content}></TodoInput>
         <TodoButton onClick={onClick} type="button">추가하기</TodoButton>
       </FormItems>

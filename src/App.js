@@ -3,7 +3,7 @@
 import React from "react";
 import { useSelector } from "react-redux"; // import 해주세요.
 import styled from "styled-components";
-import TodosContainer from "./components/TodosContainer";
+import TodoContainer from "./components/TodoContainer";
 import { Routes, Route, Link, Redirect } from 'react-router-dom'
 import Detail from "./components/Detail.jsx"
 
@@ -14,7 +14,7 @@ const App = () => {
 
 
     <Routes>
-      <Route path="/" element={<TodosContainer/>}/>
+      <Route path="/" element={<TodoContainer/>}/>
       <Route path="/detail/:id" element={<Detail/>}/>
     </Routes>
   )
