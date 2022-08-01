@@ -1,7 +1,6 @@
 /*eslint-disable*/
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
 import styled from "styled-components";
 import { deleteTodo, toggleTodo, buttonText} from "../redux/modules/todos";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";

@@ -40,7 +40,6 @@ export const toggleTodo = (id) => ({
 // 초기 상태값
 const initialState = {
   todo_1: [],
-
 };
 
 

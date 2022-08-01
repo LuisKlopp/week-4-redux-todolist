@@ -53,7 +53,6 @@ const TodoForm = () => {
 
   const onChange = e => {
     e.target.name === 'title' ? setTitle(e.target.value) : setContent(e.target.value)
-    
   }
 
   const onClick = () => {

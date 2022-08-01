@@ -8,7 +8,6 @@ import { Routes, Route, Link, Redirect } from 'react-router-dom'
 import Detail from "./components/Detail.jsx"
 
 const App = () => {
-  const counterStore = useSelector((state) => state); // 추가해주세요.
 
   return (
 
