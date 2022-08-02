@@ -22,41 +22,45 @@ const StWrapper = styled.div`
   align-items: center;
 `;
 
-const StItem = styled.div`
-  width: 30%;
-  height: 50vh;
-  display: flex;
-  flex-direction: column;
-  border: 3px solid #ea5718;
-  justify-content: center;
-  align-items: center;
-`;
+
 
 const Stbutton = styled.div`
-  width:30%;
-  background-color: antiquewhite;
-  padding:20px;
-  margin: 0px 0px 50px 0px;
-  text-align: center;
-  font-weight: 600;
-  font-size:20px;
-  &:hover{  
-    background-color : #f2ae81;
-  }
+width:30%;
+background-color: antiquewhite;
+padding:20px;
+margin: 0px 0px 50px 0px;
+text-align: center;
+font-weight: 600;
+font-size:20px;
+&:hover{  
+  background-color : #f2ae81;
+}
 `
+
+const StItem = styled.div`
+width: 30%;
+height: 50vh;
+display: flex;
+flex-direction: column;
+border: 3px solid ${props => props.isDone ? '#12a670' : '#ea5718' };
+justify-content: center;
+align-items: center;
+`;  
+
 
 const Detail = () => {
   const { id } = useParams();
   const todo_state = useSelector((state) => state.todo.todo_1); // 추가해주세요.
   const navigate = useNavigate();
   let todos = todo_state.find(data => data.id === Number(id));
+  const isDone = todos.isDone;
 
-
+  
   return (
     <>
       <GlobalStyle/>
       <StWrapper>
-        <StItem>
+        <StItem isDone={isDone}>
           <h3>id : {todos.id}</h3>
           <Stbutton onClick={() => {navigate("/")}} style={{cursor:"pointer"}}>메인으로</Stbutton>
           <h1>{todos.title}</h1>
