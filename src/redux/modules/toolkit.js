@@ -16,6 +16,4 @@ let todos = createSlice ({
 })
 
 
-export default configureStore({
-  reducer: { }
-}) 
+export default todos
