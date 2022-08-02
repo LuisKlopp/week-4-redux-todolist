@@ -27,7 +27,7 @@ const StItem = styled.div`
   height: 50vh;
   display: flex;
   flex-direction: column;
-  border: 3px solid #ea5718;
+  border: 3px solid ${props => props.isDone ? '#12a670' : '#ea5718'};
   justify-content: center;
   align-items: center;
 `;
@@ -50,13 +50,14 @@ const Detail = () => {
   const todo_state = useSelector((state) => state.todo.todo_1); // 추가해주세요.
   const navigate = useNavigate();
   let todos = todo_state.find(data => data.id === Number(id));
+  let isDone = todos.isDone
 
 
   return (
     <>
       <GlobalStyle/>
       <StWrapper>
-        <StItem>
+        <StItem isDone={isDone}>
           <h3>id : {todos.id}</h3>
           <Stbutton onClick={() => {navigate("/")}} style={{cursor:"pointer"}}>메인으로</Stbutton>
           <h1>{todos.title}</h1>

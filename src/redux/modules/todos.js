@@ -14,12 +14,12 @@ const ADD_TODO = "todos/ADD_TODO";
 const DELETE_TODO = "todos/DELETE_TODO";
 const TOGGLE_TODO = "todos/TOGGLE_TODO";
 
-let nextId = 1; // todo 데이터에서 사용 할 고유 id
+let nextId = 1; 
 
 export const addTodo = (title, content) => ({
   type: ADD_TODO,
   todo: {
-    id: nextId++, // 새 항목을 추가하고 nextId 값에 1을 더해줍니다.
+    id: nextId++, 
     title,
     content,
     isDone: false,
@@ -39,13 +39,14 @@ export const toggleTodo = (id) => ({
 
 // 초기 상태값
 const initialState = {
-  todo_1: [],
+  todo_1: [], 
 };
 
 
 
 // 리듀서
 const todos = (state = initialState, action) => {
+  
   switch (action.type) {
     case ADD_TODO:
       const addState = { ...state, todo_1: [...state.todo_1, action.todo] };

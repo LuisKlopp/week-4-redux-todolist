@@ -50,7 +50,6 @@ const TodoForm = () => {
   const dispatch = useDispatch();
   const onCreate = (title, content) => dispatch(addTodo(title, content));
 
-
   const onChange = e => {
     e.target.name === 'title' ? setTitle(e.target.value) : setContent(e.target.value)
   }
