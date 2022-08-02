@@ -2,13 +2,19 @@ import { configureStore, createSlice } from '@reduxjs/toolkit'
 
 
 
+
+
 let todos = createSlice ({
   name : 'todos',
   initialState : {
-    todo_1: [
-    ]
+    todo_1: []
   },
   reducers: {
+    CREATE: (state, action) => {
+      let newState = [...state]
+      newState.push(action.payload);
+      return newState;
+    },
 
   }
 
