@@ -12,6 +12,8 @@ let todos = createSlice ({
 
   }
 
+  // 그냥 날이 좋길래
+
 
 })
 
