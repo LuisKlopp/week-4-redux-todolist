@@ -6,7 +6,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 // 우리가 추가할 코드
-import store from "./redux/modules/toolkit.js";
+import store from "./redux/modules/store.js";
 import { Provider } from "react-redux";
 
 // const store = createStore(rootReducer);
