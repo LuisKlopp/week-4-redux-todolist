@@ -1,6 +1,6 @@
 ## 프로젝트 설명
 
-#### react-redux에 익숙해지기 위한 To-Do-List
+#### redux tool-kit으로 버전 업그레이드
 
 <br/>
 
