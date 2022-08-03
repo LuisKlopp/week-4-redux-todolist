@@ -47,8 +47,9 @@ const Stbutton = styled.div`
 
 const Detail = () => {
   const { id } = useParams();
-  const todo_state = useSelector((state) => state.todo.todo_1); // 추가해주세요.
+  const todo_state = useSelector((state) => state.todos.todo_1); // 추가해주세요.
   const navigate = useNavigate();
+  console.log(todo_state)
   let todos = todo_state.find(data => data.id === Number(id));
   let isDone = todos.isDone
 

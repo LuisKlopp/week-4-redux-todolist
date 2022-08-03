@@ -2,7 +2,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from "styled-components";
-import { deleteTodo, toggleTodo, buttonText} from "../redux/modules/todos";
+import { deleteTodo, toggleTodo } from "../store";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 
 
@@ -54,8 +54,8 @@ const TodoItem = ({todo, i}) => {
 
 
   const dispatch = useDispatch();
-  // const onDelete = (id) => dispatch(deleteTodo(id))
-  // const onToggle = (id) => dispatch(toggleTodo(id))
+  const onDelete = (id) => dispatch(deleteTodo(id))
+  const onToggle = (id) => dispatch(toggleTodo(id))
   const navigate = useNavigate();
   const isDone = todo.isDone;
 
@@ -71,10 +71,10 @@ const TodoItem = ({todo, i}) => {
     <span style={{fontWeight:600, fontSize:'20px'}}>{todo.title}</span>
     <span>{todo.content}</span>
     <StDiv>
-    {/* <StButton onClick={() => { onDelete(todo.id) }}>삭제하기</StButton> */}
-    {/* <StButton onClick={() => { onToggle(todo.id)}}> */}
-    {/* {isDone ? "취소!" : "완료!"}
-    </StButton> */}
+    <StButton onClick={() => { onDelete(todo.id) }}>삭제하기</StButton>
+    <StButton onClick={() => { onToggle(todo.id)}}>
+    {isDone ? "취소!" : "완료!"}
+    </StButton>
     </StDiv>
     </StItem>
     </>

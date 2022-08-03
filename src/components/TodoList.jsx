@@ -19,7 +19,6 @@ const TodoList = () => {
   const state = useSelector((state) => state.todos.todo_1);
   const working_list = state.filter((todo) => todo.isDone === false).map((todo, i) => <TodoItem todo={todo} key={todo.id}></TodoItem>);
   const done_list = state.filter((todo) => todo.isDone === true).map((todo, i) => <TodoItem todo={todo} key={todo.id}></TodoItem>);
-  console.log(state)
   
   return (
     <>

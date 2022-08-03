@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo } from "../redux/modules/todos";
+import { addTodo } from "../store";
 
 const FormComtainer = styled.div`
   width:100%;
@@ -48,7 +48,7 @@ const TodoForm = () => {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const dispatch = useDispatch();
-  const onCreate = (title, content) => dispatch(addTodo(title, content));
+  const onCreate = (title, content) => dispatch(addTodo({title, content}));
   const onChange = e => {
     e.target.name === 'title' ? setTitle(e.target.value) : setContent(e.target.value)
   }
