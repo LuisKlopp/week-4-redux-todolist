@@ -22,8 +22,6 @@ const StWrapper = styled.div`
   align-items: center;
 `;
 
-
-
 const Stbutton = styled.div`
 width:30%;
 background-color: antiquewhite;
