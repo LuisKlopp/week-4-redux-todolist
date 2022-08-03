@@ -1,6 +1,7 @@
 ## 프로젝트 설명
 
-#### react-redux에 익숙해지기 위한 To-Do-List
+#### react-redux에 익숙해지기 위한 To-Do-List 
+#### (ryu 브랜치에 tool-kit 버전으로 업데이트)
 
 <br/>
 
