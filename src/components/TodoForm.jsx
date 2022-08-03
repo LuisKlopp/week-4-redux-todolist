@@ -48,15 +48,14 @@ const TodoForm = () => {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const dispatch = useDispatch();
-  // const onCreate = (title, content) => dispatch(addTodo(title, content));
-
+  const onCreate = (title, content) => dispatch(addTodo(title, content));
   const onChange = e => {
     e.target.name === 'title' ? setTitle(e.target.value) : setContent(e.target.value)
   }
 
   const onClick = () => {
     if ( title !== '' && content !== '') {
-      // onCreate(title, content);
+      onCreate(title, content);
       setTitle('');
       setContent('');
     }

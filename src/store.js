@@ -9,12 +9,9 @@ const todos = createSlice ({
   initialState : {
     todo_1: []
   },
-
   reducers: {
     addTodo: (state, action) => {
-      let newState = [...state]
-      newState.push(action.payload);
-      return newState;
+      return state;
     },
 
   }
@@ -24,4 +21,10 @@ const todos = createSlice ({
 })
 
 
-export default todos
+export let { addTodo } = todos.actions;
+
+export default configureStore({
+  reducer: {
+    todos: todos.reducer,
+  },
+});
