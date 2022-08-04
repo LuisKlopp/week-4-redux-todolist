@@ -74,6 +74,7 @@ const TodoForm = () => {
         <h2>내용</h2>
         <TodoInput name="content" onChange={onChange} value={content}></TodoInput>
         <TodoButton onClick={onClick} type="button">추가하기</TodoButton>
+        
       </FormItems>
     </FormComtainer>
     </>

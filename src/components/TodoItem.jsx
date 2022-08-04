@@ -72,6 +72,7 @@ const TodoItem = ({todo, i}) => {
     <span>{todo.content}</span>
     <StDiv>
     <StButton onClick={() => { onDelete(todo.id) }}>삭제하기</StButton>
+    
     <StButton onClick={() => { onToggle(todo.id)}}>
     {isDone ? "취소!" : "완료!"}
     </StButton>

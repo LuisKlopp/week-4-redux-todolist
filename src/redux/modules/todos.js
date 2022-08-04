@@ -20,11 +20,12 @@ export const addTodo = (title, content) => ({
   type: ADD_TODO,
   todo: {
     id: nextId++, // 새 항목을 추가하고 nextId 값에 1을 더해줍니다.
-    title,
-    content,
+    title: title,
+    content: content,
     isDone: false,
   },
-});
+}
+);
 
 export const deleteTodo = (id) => ({
   type: DELETE_TODO,
@@ -39,7 +40,10 @@ export const toggleTodo = (id) => ({
 
 // 초기 상태값
 const initialState = {
-  todo_1: [],
+  todo_1: [
+
+
+  ],
 };
 
 
