@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useReducer} from 'react';
 import { useState } from 'react';
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,23 +41,35 @@ const FormItems = styled.div`
 `
 
 
+const reducer = (state, action) => {
+  return{
+  ...state,
+  [action.name]: action.value
+  }
+}
+
+
 const TodoForm = () => {
 
-
-
-  const [title, setTitle] = useState("")
-  const [content, setContent] = useState("")
   const dispatch = useDispatch();
-  const onCreate = (title, content) => dispatch(addTodo({title, content}));
-  const onChange = e => {
-    e.target.name === 'title' ? setTitle(e.target.value) : setContent(e.target.value)
-  }
+  
+  const [state, setState] = useReducer(reducer, {
+    title: '',
+    content: '',
+  })
+  
+  const { title, content } = state;
 
+  const onCreate = (title, content) => dispatch(addTodo({title, content}));
+
+  const onChange = e => {
+    setState(e.target)
+  }
+  
   const onClick = () => {
     if ( title !== '' && content !== '') {
+      // ({type:SUBMIT_FORM, })
       onCreate(title, content);
-      setTitle('');
-      setContent('');
     }
   }
 
@@ -68,9 +80,9 @@ const TodoForm = () => {
       <h1 style={{marginRight:"50px"}}>Todo!</h1>
       <FormItems>
         <h2>제목</h2>
-        <TodoInput name="title" onChange={onChange} value={title}></TodoInput>
+        <TodoInput name="title" onChange={onChange}></TodoInput>
         <h2>내용</h2>
-        <TodoInput name="content" onChange={onChange} value={content}></TodoInput>
+        <TodoInput name="content" onChange={onChange}></TodoInput>
         <TodoButton onClick={onClick} type="button">추가하기</TodoButton>
       </FormItems>
     </FormComtainer>
